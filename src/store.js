@@ -10,7 +10,6 @@ const reducerFunction = (state, action) => {
     case "updateTickets":
       return { ...state, ticketsArray: [...action.payload] };
     default:
-      console.log("default state");
       return state;
   }
 };
