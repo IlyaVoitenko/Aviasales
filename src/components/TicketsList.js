@@ -1,15 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import style from "./css/RenderTicketsCard.module.css";
-const RenderTicketsCard = () => {
-  let id = 0;
-  let idSegment = 0;
-  let stopsId = 0;
-  const ticketsArray = useSelector((state) => state.ticketsArray);
-  return ticketsArray.map((ticket) => {
-    id++;
+const RenderTicketsCard = ({ arrayTickets }) => {
+  let keyIdSegment = 0;
+  let keyIdStops = 0;
+  //вывести в отдельный компонент
+  return arrayTickets.map((ticket, index) => {
     return (
-      <div key={id} className={style.container}>
+      <div key={index} className={style.container}>
         <div className={style.containerImgPrice}>
           <h2 className={style.priceTicket}>{ticket.price} P</h2>
           <img
@@ -20,7 +17,7 @@ const RenderTicketsCard = () => {
         </div>
         <div className={style.containreTicketContext}>
           {ticket.segments.map((segment) => {
-            idSegment++;
+            keyIdSegment++;
             //время начала вылета
             let timeStartFlightHour = segment.date.slice(11, 13);
             let timeStartFlightMinetes = segment.date.slice(14, 16);
@@ -29,7 +26,7 @@ const RenderTicketsCard = () => {
             let durationMinutes =
               Math.floor(segment.duration) - durationHours * 60;
             // количество пересадок
-            let countTransplants = segment.stops.length;
+            let countTransplantations = segment.stops.length;
             // время прибытия
             let timeEndFlightHour = timeStartFlightHour;
             let timeEndFlightMinuts = timeStartFlightMinetes;
@@ -52,7 +49,7 @@ const RenderTicketsCard = () => {
               }
             }
             return (
-              <div key={idSegment} className={style.containerContext}>
+              <div key={keyIdSegment} className={style.containerContext}>
                 <div className={style.CodeCityies}>
                   <div>
                     {segment.destination} - {segment.origin}
@@ -68,11 +65,11 @@ const RenderTicketsCard = () => {
                     </div>
                   </div>
                   <div>
-                    {countTransplants} ПЕРЕСАДОК
+                    {countTransplantations} ПЕРЕСАДОК
                     <div className={style.parentStopCityDiv}>
-                      {segment.stops.map((stopCity) => {
-                        stopsId++;
-                        return <div key={stopsId}>{stopCity},</div>;
+                      {segment.stops.map((stop) => {
+                        keyIdStops++;
+                        return <div key={keyIdStops}>{stop},</div>;
                       })}
                     </div>
                   </div>
