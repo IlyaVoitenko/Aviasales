@@ -13,6 +13,10 @@ const reducerFunction = (state, action) => {
       return { ...state, ticketsArray: [...action.payload] };
     case "sortByTimeDuration":
       return { ...state, ticketsArray: [...action.payload] };
+    case "sortWithOutTransfers":
+      return { ...state, ticketsArray: [...action.payload] };
+    case "sortWithOneTransfer":
+      return { ...state, ticketsArray: [...action.payload] };
     default:
       return state;
   }

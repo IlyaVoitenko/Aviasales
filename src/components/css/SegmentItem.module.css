@@ -1,0 +1,18 @@
+.containreTicketContext {
+  height: 70px;
+}
+.containerContext {
+  height: 70px;
+}
+.CodeCityies {
+  width: 500px;
+  margin-top: 20px;
+  margin-right: 90px;
+}
+.CodeCityies > div {
+  padding-left: 70px;
+  float: left;
+}
+.parentStopCityDiv > div {
+  float: left;
+}

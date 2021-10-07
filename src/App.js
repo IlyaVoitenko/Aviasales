@@ -1,16 +1,19 @@
 import "./App.css";
-import RenderTicketsCard from "./components/TicketsList";
+import TicketsList from "./components/TicketsList";
 import ButtonsCategories from "./components/ButtonsCategories";
 import useUpdateTicketsStore from "./components/useUpdateTicketsStore";
+import FilterTicketsByRadio from "./components/FilterTicketsByRadio";
 function App() {
   useUpdateTicketsStore();
   return (
     <div className="App">
       <div className="containerComponents">
-        <div></div>
+        <div>
+          <FilterTicketsByRadio />
+        </div>
         <div>
           <ButtonsCategories />
-          {/* <RenderTicketsCard /> */}
+          <TicketsList />
         </div>
       </div>
     </div>

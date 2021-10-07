@@ -23,27 +23,11 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
 }
-.containreTicketContext {
-  height: 170px;
-}
-.CodeCityies {
-  width: 500px;
-  margin-top: 20px;
-  margin-right: 90px;
-}
-.CodeCityies > div {
-  padding-left: 70px;
-  float: left;
-}
-.parentStopCityDiv > div {
-  float: left;
-}
+
 .timeTransplants {
   margin-right: 260px;
 }
-.containerContext {
-  height: 70px;
-}
+
 .transplants {
   width: 150px;
   height: 50px;

@@ -1,10 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import RenderTicketsCard from "./TicketsList";
 const ButtonsCategories = () => {
   const ticketsArray = useSelector((state) => state.ticketsArray);
   const dispatch = useDispatch();
-  console.log(ticketsArray);
   return (
     <div>
       <button
@@ -31,7 +29,6 @@ const ButtonsCategories = () => {
       >
         САМЫЙ БЫСТРЫЙ
       </button>
-      <RenderTicketsCard arrayTickets={ticketsArray} />
     </div>
   );
 };
