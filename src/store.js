@@ -2,25 +2,47 @@ import { createStore } from "redux";
 const initialState = {
   searchId: "",
   ticketsArray: [],
+  filteredTicketsArray: [],
+  isUseFilter: true,
+  filtersCheckBoxes: [],
 };
-const reducerFunction = (state, action) => {
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "updateSearchId":
       return { ...state, ...action.payload };
     case "updateTickets":
-      return { ...state, ticketsArray: [...action.payload] };
+      return { ...state, filteredTicketsArray: [...action.payload] };
     case "sortInexpensiveTickets":
-      return { ...state, ticketsArray: [...action.payload] };
+      return { ...state, filteredTicketsArray: [...action.payload] };
     case "sortByTimeDuration":
-      return { ...state, ticketsArray: [...action.payload] };
+      return { ...state, filteredTicketsArray: [...action.payload] };
+    case "allTickets":
+      return { ...state, filteredTicketsArray: [...action.payload] };
     case "sortWithOutTransfers":
-      return { ...state, ticketsArray: [...action.payload] };
+      return { ...state, filteredTicketsArray: [...action.payload] };
     case "sortWithOneTransfer":
-      return { ...state, ticketsArray: [...action.payload] };
+      return { ...state, filteredTicketsArray: [...action.payload] };
+    case "sortWithTwoTransfers":
+      return { ...state, filteredTicketsArray: [...action.payload] };
+    case "sortWithThreeTransfers":
+      return { ...state, filteredTicketsArray: [...action.payload] };
+    case "changeFilter":
+      state.filtersCheckBoxes.forEach((item) => {
+        if (item.checked === false) {
+          state.filtersCheckBoxes.pop(item);
+        }
+      });
+      return {
+        ...state,
+        filtersCheckBoxes: [...state.filtersCheckBoxes, action.payload],
+      };
     default:
       return state;
   }
 };
-const store = createStore(reducerFunction, initialState);
-console.log(store);
+const store = createStore(
+  reducer /* preloadedState, */,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 export default store;

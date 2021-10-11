@@ -18,12 +18,12 @@ const ButtonsCategories = () => {
       </button>
       <button
         onClick={() => {
-          ticketsArray.sort(
-            (a, b) => a.segments[0].duration - b.segments[1].duration
+          let sortedArray = ticketsArray.filter(
+            (item) => item.segments[0].duration - item.segments[1].duration
           );
           dispatch({
             type: "sortByTimeDuration",
-            payload: ticketsArray,
+            payload: sortedArray,
           });
         }}
       >

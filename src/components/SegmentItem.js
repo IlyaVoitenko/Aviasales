@@ -14,7 +14,7 @@ const SegmentItem = ({ segments }) => {
     const durationHours = Math.floor(segment.duration / 60);
     const durationMinutes = Math.floor(segment.duration) - durationHours * 60;
     // количество пересадок
-    const countTransplantations = segment.stops.length;
+    const countTransfers = segment.stops.length;
 
     return (
       <div key={index} className={style.containreTicketContext}>
@@ -31,7 +31,7 @@ const SegmentItem = ({ segments }) => {
               </div>
             </div>
             <div>
-              {countTransplantations} ПЕРЕСАДОК
+              {countTransfers} ПЕРЕСАДОК
               <div className={style.parentStopCityDiv}>
                 {segment.stops.map((stop, index) => {
                   return <div key={index}>{stop},</div>;
