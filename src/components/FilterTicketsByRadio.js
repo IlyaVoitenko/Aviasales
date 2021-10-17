@@ -1,14 +1,15 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import style from "./css/FilterTicketsByRadio.module.css";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import style from './css/FilterTicketsByRadio.module.css';
 const FilterTicketsByRadio = () => {
   let filtersCheckBoxes = useSelector((state) => state.filtersCheckBoxes);
 
   let dispatch = useDispatch();
+
   function changeFilters({ target }) {
     const { checked, value } = target;
     dispatch({
-      type: "changeFilter",
+      type: 'changeFilter',
       payload: { checked, value },
     });
   }
@@ -18,7 +19,7 @@ const FilterTicketsByRadio = () => {
     let arrSorted = array.filter(
       (item) =>
         item.segments[0].stops.length === filter &&
-        item.segments[1].stops.length === filter
+        item.segments[1].stops.length === filter,
     );
     if (isUseFilter === true) {
       dispatch({
