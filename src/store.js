@@ -1,6 +1,6 @@
-import { createStore } from "redux";
+import { createStore } from 'redux';
 const initialState = {
-  searchId: "",
+  searchId: '',
   ticketsArray: [],
   filteredTicketsArray: [],
   isUseFilter: true,
@@ -9,33 +9,44 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "updateSearchId":
+    case 'updateSearchId':
       return { ...state, ...action.payload };
-    case "updateTickets":
+    case 'updateTickets':
       return { ...state, filteredTicketsArray: [...action.payload] };
-    case "sortInexpensiveTickets":
+    case 'sortInexpensiveTickets':
       return { ...state, filteredTicketsArray: [...action.payload] };
-    case "sortByTimeDuration":
+    case 'sortByTimeDuration':
       return { ...state, filteredTicketsArray: [...action.payload] };
-    case "allTickets":
+    case 'allTickets':
       return { ...state, filteredTicketsArray: [...action.payload] };
-    case "sortWithOutTransfers":
+    case 'sortWithOutTransfers':
       return { ...state, filteredTicketsArray: [...action.payload] };
-    case "sortWithOneTransfer":
+    case 'sortWithOneTransfer':
       return { ...state, filteredTicketsArray: [...action.payload] };
-    case "sortWithTwoTransfers":
+    case 'sortWithTwoTransfers':
       return { ...state, filteredTicketsArray: [...action.payload] };
-    case "sortWithThreeTransfers":
+    case 'sortWithThreeTransfers':
       return { ...state, filteredTicketsArray: [...action.payload] };
-    case "changeFilter":
-      state.filtersCheckBoxes.forEach((item) => {
-        if (item.checked === false) {
-          state.filtersCheckBoxes.pop(item);
-        }
-      });
+    case 'changeFilter':
+      // state.filtersCheckBoxes.forEach((item) => {
+      //   if (item.checked === false) {
+      //     state.filtersCheckBoxes.pop(item);
+      //   }
+      // });
+      const { checked, value } = action.payload;
+      if (checked) {
+        return {
+          ...state,
+          filtersCheckBoxes: [...state.filtersCheckBoxes, value],
+        };
+      }
       return {
         ...state,
-        filtersCheckBoxes: [...state.filtersCheckBoxes, action.payload],
+        filtersCheckBoxes: [
+          ...state.filtersCheckBoxes.filter(
+            (checkBoxValue) => checkBoxValue !== value,
+          ),
+        ],
       };
     default:
       return state;
@@ -43,6 +54,6 @@ const reducer = (state = initialState, action) => {
 };
 const store = createStore(
   reducer /* preloadedState, */,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 export default store;
