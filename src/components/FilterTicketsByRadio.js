@@ -1,9 +1,7 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import style from "./css/FilterTicketsByRadio.module.css";
 const FilterTicketsByRadio = () => {
-  let filtersCheckBoxes = useSelector((state) => state.filtersCheckBoxes);
-
   let dispatch = useDispatch();
   function changeFilters({ target }) {
     const { checked, value } = target;
@@ -12,7 +10,7 @@ const FilterTicketsByRadio = () => {
       payload: { checked, value },
     });
   }
-
+  //пока оставим
   function dispatchFilter(array, isUseFilter, typeDispatch, filter) {
     console.log(isUseFilter);
     let arrSorted = array.filter(
@@ -37,8 +35,9 @@ const FilterTicketsByRadio = () => {
     <div className={style.container}>
       <br />
       <p>КОЛИЧЕСТВО ПЕРЕСАДОК</p>
-      <label className={style.filter}>
+      <label className={style.filterAll}>
         <input
+          className={style.checkbox}
           value="all"
           type="checkbox"
           id="radioButton"
@@ -46,8 +45,9 @@ const FilterTicketsByRadio = () => {
         ></input>
         Все
       </label>
-      <label className={style.filter}>
+      <label className={style.filterWithOut}>
         <input
+          className={style.checkbox}
           value="zero"
           type="checkbox"
           id="radioButton"
@@ -57,6 +57,7 @@ const FilterTicketsByRadio = () => {
       </label>
       <label className={style.filter}>
         <input
+          className={style.checkbox}
           value="one"
           type="checkbox"
           id="radioButton"
@@ -66,6 +67,7 @@ const FilterTicketsByRadio = () => {
       </label>
       <label className={style.filter}>
         <input
+          className={style.checkbox}
           value="two"
           type="checkbox"
           id="radioButton"
@@ -75,6 +77,7 @@ const FilterTicketsByRadio = () => {
       </label>
       <label className={style.filter}>
         <input
+          className={style.checkbox}
           value="three"
           type="checkbox"
           id="radioButton"

@@ -1,0 +1,33 @@
+.buttons {
+  margin-top: 80px;
+  text-align: center;
+  height: 50px;
+  width: 250px;
+  color: black;
+  border: 0px;
+}
+
+.btnUnrichPriceNotActive {
+  border-radius: 10px 0% 0% 10px;
+  color: black;
+}
+.buttons:hover {
+  background-color: rgba(3, 3, 216, 0.452);
+  color: white;
+}
+.btnUnrichPriceActive {
+  background-color: rgba(3, 3, 216, 0.452);
+  color: white;
+  border: 0px;
+  border-radius: 10px 0% 0% 10px;
+}
+.btnDurationActive {
+  background-color: rgba(3, 3, 216, 0.452);
+  color: white;
+  border: 0px;
+  border-radius: 0px 10px 10px 0px;
+}
+.btnDurationNotActive {
+  border: 0px;
+  border-radius: 0px 10px 10px 0px;
+}

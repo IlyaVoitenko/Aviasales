@@ -17,25 +17,19 @@ const reducer = (state = initialState, action) => {
       return { ...state, filteredTicketsArray: [...action.payload] };
     case "sortByTimeDuration":
       return { ...state, filteredTicketsArray: [...action.payload] };
-    case "allTickets":
-      return { ...state, filteredTicketsArray: [...action.payload] };
-    case "sortWithOutTransfers":
-      return { ...state, filteredTicketsArray: [...action.payload] };
-    case "sortWithOneTransfer":
-      return { ...state, filteredTicketsArray: [...action.payload] };
-    case "sortWithTwoTransfers":
-      return { ...state, filteredTicketsArray: [...action.payload] };
-    case "sortWithThreeTransfers":
-      return { ...state, filteredTicketsArray: [...action.payload] };
     case "changeFilter":
-      state.filtersCheckBoxes.forEach((item) => {
-        if (item.checked === false) {
-          state.filtersCheckBoxes.pop(item);
-        }
-      });
+      const { checked, value } = action.payload;
+      if (checked) {
+        return {
+          ...state,
+          filtersCheckBoxes: [...state.filtersCheckBoxes, value],
+        };
+      }
       return {
         ...state,
-        filtersCheckBoxes: [...state.filtersCheckBoxes, action.payload],
+        filtersCheckBoxes: [
+          ...state.filtersCheckBoxes.filter((item) => item !== value),
+        ],
       };
     default:
       return state;

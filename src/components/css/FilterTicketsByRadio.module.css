@@ -5,7 +5,36 @@
   border-radius: 10px;
   margin-top: 80px;
 }
+.filterWithOut {
+  display: block;
+  margin-top: 20px;
+  margin-left: 15px;
+}
+.filterAll {
+  margin-right: 65px;
+}
 .filter {
   display: block;
   margin-top: 20px;
+}
+.checkbox {
+  margin: 0 auto;
+  height: 20px;
+  width: 20px;
+}
+.checkbox:not(:disabled):not(:checked) + label:hover::before {
+  border-color: #b3d7ff;
+}
+.checkbox:not(:disabled):active + label::before {
+  background-color: #b3d7ff;
+  border-color: #b3d7ff;
+}
+.checkbox:focus + label::before {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.checkbox:focus:not(:checked) + label::before {
+  border-color: #80bdff;
+}
+.checkbox:disabled + label::before {
+  background-color: #e9ecef;
 }
